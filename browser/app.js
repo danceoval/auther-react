@@ -1,5 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import RootComponent from './RootComponent';
+import RootRouter from './RootRouter';
 
-render(<RootComponent />, document.getElementById('app'));
+render(<RootRouter />, document.getElementById('app'));

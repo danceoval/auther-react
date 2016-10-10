@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import UserItem from './UserItem';
 import UserDetail from './UserDetail';
 
-export default class UserList extends Component {
+class UserList extends Component {
+  
   render() {
     return (
       <div className="container">
@@ -24,3 +26,9 @@ export default class UserList extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ users }) => ({
+  users
+});
+
+export default connect(mapStateToProps)(UserList);
