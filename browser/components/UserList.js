@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import UserItem from './UserItem';
 import UserDetail from './UserDetail';
 
-class UserList extends Component {
-  
-  render() {
-    return (
+const UserList = ({users}) => (
       <div className="container">
         <div className="user-query">
+          {
+            users.map(user => (
+              <h1>{user.name}</h1>  
+            ))
+          }
           <UserItem />
           <UserItem />
       
@@ -24,11 +26,10 @@ class UserList extends Component {
         </div>
       </div>
     );
-  }
-}
 
-const mapStateToProps = ({ users }) => ({
-  users
+const mapStateToProps = ({ users }, {children}) => ({
+  users,
+  children
 });
 
 export default connect(mapStateToProps)(UserList);
