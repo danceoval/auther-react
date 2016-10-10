@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import UserItem from './UserItem';
 import UserDetail from './UserDetail';
 
-const UserList = ({users}) => (
+const UserList = ({users, removeUser}) => (
 
       <div className="container">
         <div className="user-query">
@@ -15,12 +15,11 @@ const UserList = ({users}) => (
         <div className="user-list">
 
          {
-
             users.map(user => (
 
               <a className="list-group-item min-content">
 
-                <UserItem user={user}/>
+                <UserItem user={user} removeUser={removeUser}/>
               </a> 
             ))
           }
@@ -32,9 +31,18 @@ const UserList = ({users}) => (
       </div>
     );
 
+const _removeUser = (user) => ({ type : 'REMOVE_USER', user})
+
 const mapStateToProps = ({ users }, {children}) => ({
   users,
   children
 });
 
-export default connect(mapStateToProps)(UserList);
+const mapDispatchToProps = dispatch => ({
+  // removeUser: (user) => fetch(`/api/users/${user.id}`, {method:'delete'})
+  //    // .then(res => console.log)
+  //     .then(() => dispatch(_removeUser(user)))
+  removeUser : (user) => dispatch(_removeUser(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);

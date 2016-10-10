@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default ({user}) => (
+export default ({user, removeUser}) => (
 			<div className="media">
 			  <div className="media-left media-middle icon-container">
 			    <span className="glyphicon">  
@@ -13,8 +13,6 @@ export default ({user}) => (
 			      </div>
 			      <span placeholder="Jean Doe">
 			      	{user.name}
-			      </span>
-			      <span className="glyphicon glyphicon-certificate toggleable">  
 			      </span>
 			    </h4>
 			    <h5 className="tucked">
@@ -38,7 +36,7 @@ export default ({user}) => (
 			  </div>
 			  <div className="media-right media-middle">
 			    <button className="btn btn-default">
-			      <span className="glyphicon glyphicon-remove"></span>
+			      <span className="glyphicon glyphicon-remove" onClick={() => removeUser(user)}></span>
 			    </button>
 			  </div>
 			</div>

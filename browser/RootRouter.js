@@ -17,6 +17,12 @@ const receiveUsers = users => ({
   users : users
 });
 
+const removeUser = user => ({
+  type: 'REMOVE_USER',
+  user : user
+});
+
+
 export default class RootRouter extends Component {
   render() {
     return (
