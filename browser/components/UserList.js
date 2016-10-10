@@ -4,25 +4,30 @@ import UserItem from './UserItem';
 import UserDetail from './UserDetail';
 
 const UserList = ({users}) => (
+
       <div className="container">
         <div className="user-query">
-          {
-            users.map(user => (
-              <h1>{user.name}</h1>  
-            ))
-          }
-          <UserItem />
-          <UserItem />
+         
+          
       
         </div>
         <br /><br />
         <div className="user-list">
-          <a className="list-group-item min-content">
-            <UserItem />
-          </a>
+
+         {
+
+            users.map(user => (
+
+              <a className="list-group-item min-content">
+
+                <UserItem user={user}/>
+              </a> 
+            ))
+          }
+          
         </div>
         <div className="fixed">
-          <UserDetail />
+          
         </div>
       </div>
     );

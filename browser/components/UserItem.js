@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 
-export default class UserItem extends Component {
-	render() {
-		return (
+export default ({user}) => (
 			<div className="media">
 			  <div className="media-left media-middle icon-container">
 			    <span className="glyphicon">  
 			    </span>
-			    <img className="media-object img-circle"  />
+			    <img className="media-object img-circle"  src={user.photo}/>
 			  </div>
 			  <div className="media-body">
 			    <h4 className="media-heading tucked">
 			      <div className="form-like">
 			      </div>
-			      <span placeholder="Jean Doe">  
+			      <span placeholder="Jean Doe">
+			      	{user.name}
 			      </span>
 			      <span className="glyphicon glyphicon-certificate toggleable">  
 			      </span>
@@ -24,6 +23,7 @@ export default class UserItem extends Component {
 			        className="form-like">
 			      </div>
 			      <span>
+			      	{user.email}
 			      </span>
 			    </h5>
 			    <h5 className="tucked">
@@ -32,6 +32,7 @@ export default class UserItem extends Component {
 			        className="form-like">
 			      </div>
 			      <span>
+			      	{user.phone}
 			      </span>
 			    </h5>
 			  </div>
@@ -42,5 +43,3 @@ export default class UserItem extends Component {
 			  </div>
 			</div>
 		)
-	}
-}
