@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import UserItem from './UserItem';
 import UserDetail from './UserDetail';
 import { connect } from 'react-redux';
-import {_removeUser} from '../action_creators/Users';
+import { removeUser } from '../actionCreators';
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
 class UserList extends Component {
   render() {
-    const {users, removeUser} = this.props;
+    const { users, removeUser } = this.props;
+
     return (
       <div className="container">
         <div className="user-query">
         </div>
-        <br /><br />
+        <br />
+        <br />
         <div className="user-list">
           {  
             users.map((user, index) => (
@@ -28,14 +32,14 @@ class UserList extends Component {
   }
 }
 
-const mapStateToProps = ({ users }, { children }) => ({ users, children });
+function mapStateToProps({ users }) {
+  return { users };
+}
 
-const mapDispatchToProps = dispatch => ({
-  removeUser: user => dispatch(_removeUser(user))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserList);
-
-         
+function mapDispatchToProps(dispatch) {
+  return {
+    removeUser: user => dispatch(Actions.removeUser(user))
+  };
+}      
 
 
