@@ -11,3 +11,4 @@ export const _removeUser = user => ({
   type: REMOVE_USER,
   user
 });
+
