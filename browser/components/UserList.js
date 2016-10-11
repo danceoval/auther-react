@@ -15,9 +15,9 @@ class UserList extends Component {
         <div className="user-list">
           {  
             users.map((user, index) => (
-              <a className="list-group-item min-content">
+              <div className="list-group-item min-content">
                 <UserItem key={index} user={user} removeUser={removeUser}/>
-              </a> 
+              </div> 
             )) 
           }
         </div>

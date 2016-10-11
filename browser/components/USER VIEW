@@ -1,0 +1,20 @@
+ USER VIEW
+ 	- User filter
+ 	- Add User
+
+ SIGN UP
+ 	-Twitter
+ 	-G+
+ 	-Github
+
+ LOG IN
+ 	-Twitter
+ 	-G+
+ 	-Github
+
+ STORIES
+ 	- List Stories
+ 	- Search Stories
+ 	- Delete Stories
+ 	- Add Stories
+ 	- Vulnerable to XSS

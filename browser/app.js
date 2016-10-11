@@ -6,6 +6,7 @@ import store from './Store';
 import Root from './components/Root';
 import Home from './components/Home';
 import UserList from './components/UserList';
+import UserDetail from './components/UserDetail';
 
 /* REFACTOR - MOVE THIS */
 // should be moved to inside user something
@@ -27,6 +28,7 @@ class AppRouter extends Component {
           <Route path="/" component={Root}>
             <IndexRoute component={Home}/>
             <Route path="/users" component={UserList} onEnter={onUsersEnter}/>
+            <Route path="/users/:id" component={UserDetail} onEnter={onUsersEnter}/>
             //Bad urls redirect to home
             <Route path="*" component={Home} />
           </Route>

@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import UserItem from './UserItem';
+import {Link} from 'react-router';
+import { connect } from 'react-redux';
 
-export default class UserDetail extends Component {
+class UserDetail extends Component {
+	
 	render() {
+		const users = this.props.users;
+		const id = Number(this.props.params.id);
+		let userArr = users.filter((user) => {
+			return user.id === id;
+		});
+		let user = userArr[0];
+
 		return (
 			<div className="container">
-			  <UserItem />
+		 		<UserItem user={user} ></UserItem>
 			  <div className="panel panel-warning">
 			    <div className="panel-heading">
 			      <h2 className="panel-title large-font">stories</h2>
@@ -33,3 +43,7 @@ export default class UserDetail extends Component {
 		)
 	}
 }
+
+const mapStateToProps = ({ users }, { children }) => ({ users, children });
+
+export default connect(mapStateToProps)(UserDetail);

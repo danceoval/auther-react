@@ -27,15 +27,15 @@ export default class Navbar extends Component {
                 <Link to="/users">users</Link>
               </li>
               <li>
-                <a href="/">stories</a>
+                <Link to="/">stories</Link>
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <a href="signup">signup</a>
+                <Link to="/signup">signup</Link>
               </li>
               <li>
-                <a href="login">login</a>
+                <Link to="/login">login</Link>
               </li>
               <li>
                 <button className="navbar-btn btn btn-default">logout</button>
