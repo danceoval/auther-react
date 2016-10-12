@@ -1,4 +1,12 @@
+Main Page
+ DONE: Basic main page renders
+ DONE: renders correct buttons if logged in or not
+
  USER VIEW
+  DONE: Navigation to /Users
+  DONE: Navigation to /Users/:id
+  DONE: Fetching initial users
+  DONE: Removing a user
   - User filter
   - Add User
 

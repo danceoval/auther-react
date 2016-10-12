@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.15.0",
     "babel": "^5.8.38",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
@@ -24,6 +25,7 @@
     "express-session": "^1.14.1",
     "font-awesome": "^4.6.3",
     "jquery": "^3.1.1",
+    "lodash": "^4.16.4",
     "morgan": "^1.6.1",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
@@ -33,6 +35,8 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "redux": "^3.6.0",
+    "redux-logger": "^2.7.0",
+    "redux-thunk": "^2.1.0",
     "request": "^2.74.0",
     "sequelize": "^3.23.1",
     "webpack": "^1.13.2"
