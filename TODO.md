@@ -29,3 +29,8 @@ Main Page
   - Add Stories
   - Vulnerable to XSS
   - cascading delete on author delete ? Server side also
+
+VISIBILITY CONTROLS
+ - Stories are globally editable 
+ - Logged in user may delete their own story/edit own profile info
+ - Admins may delete any story/user
