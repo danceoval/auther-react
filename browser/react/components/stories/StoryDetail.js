@@ -23,7 +23,7 @@ export default ({users, story, currentUser}) => {
         </li>
       </ul>
       <br />
-      <p contentEditable={currentUser && (currentUser.id === story.author_id || currentUser.isAdmin)}
+      <p contentEditable
          placeholder="(text here)" 
          dangerouslySetInnerHTML={{ 
             __html: (story && story.paragraphs) ? 
@@ -34,3 +34,6 @@ export default ({users, story, currentUser}) => {
     </div>
   )
 }
+
+// removed contentEditable conditional
+// ={currentUser && (currentUser.id === story.author_id || currentUser.isAdmin)}

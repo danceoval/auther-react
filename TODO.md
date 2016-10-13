@@ -1,35 +1,46 @@
-Main Page
- DONE: Basic main page renders
- DONE: renders correct buttons if logged in or not
+<!-- 
+DONE: Main Page
+ - DONE: Basic main page renders
+ - DONE: renders correct buttons if logged in or not 
+ -->
 
- USER VIEW
-  DONE: Navigation to /Users
-  DONE: Navigation to /Users/:id
-  DONE: Fetching initial users
-  DONE: Removing a user
+ USER LIST
+<!--   
+  - DONE: Navigation to /Users
+  - DONE: Fetching initial users
+  - DONE: Removing a user 
+-->
   - User filter
   - Add User
+  - remove only for admins
+
+USER DETAIL
+<!--   
+  - DONE: Navigation to /Users/:id
+-->
+  - Associate stories with user detail view
+  - remove only for admins
+
+STORIES
+<!--   
+  - DONE: List Stories
+  - DONE: Select Author for Stories 
+  - DONE: Add Stories (anyone)-->
+  - Search Stories
+  - Delete Stories (self or admin)
+    - DONE: Add Stories (self or admin)
+  - cascading delete on author delete ? Server side also
+
+STORY DETAIL
+  - Vulnerable to XSS
+  - 
 
  SIGN UP
-  -Twitter
-  -G+
-  -Github
+  DONE: Google
 
  LOG IN
   DONE: Vanilla
-  -Twitter
-  -G+
-  -Github
-
- STORIES
-  DONE: List Stories
-  DONE: Stories Detail View
-  DONE: Select Author for Stories
-  - Search Stories
-  - Delete Stories
-  - Add Stories
-  - Vulnerable to XSS
-  - cascading delete on author delete ? Server side also
+  DONE: Google
 
 VISIBILITY CONTROLS
  - Stories are globally editable 
