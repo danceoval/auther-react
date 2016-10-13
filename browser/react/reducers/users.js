@@ -27,7 +27,7 @@ const _addUser = user =>
   // so they can make your logic considerably simpler!
 export const receiveUsers = () => dispatch =>
   axios.get('/api/users')
-       .then(res => dispatch(_receiveUsers(res.data)))
+       .then(res => dispatch(_receiveUsers(res.data)));
 
 // remove users is doing an 'optimistic' update
 // we update the front-end, and only then try to update the 

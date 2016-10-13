@@ -1,15 +1,14 @@
 import React from 'react';
-import axios from 'axios';
-import auth from './auth';
-
+import {login} from '../../reducers/auth';
+import store from '../../store';
 
 export default class extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            email: '',
-            password: ''
+            email: 'omri@zeke.zeke',
+            password: '123'
         };
         // Bind event from node to component
         this.updateEmail = this.updateEmail.bind(this);
@@ -28,10 +27,7 @@ export default class extends React.Component {
     submitLogin(e) {
         e.preventDefault();
         // Call our action.
-        console.log(this.state);
-        axios.post('/auth/login', this.state)
-            .then(this.toData)
-
+        store.dispatch(login(this.state));
     }
 
     toData(res) {

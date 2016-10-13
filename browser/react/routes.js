@@ -10,7 +10,7 @@ import StoriesContainer from './components/stories/StoriesContainer';
 import StoryDetailContainer from './components/stories/StoryDetailContainer';
 import { receiveUsers } from './reducers/users';
 import { receiveStories } from './reducers/stories';
-import { setCurrentUser } from './reducers/currentUser';
+import { retrieveLoggedInUser } from './reducers/auth';
 
 export default () => (
   <Router history={browserHistory}>
@@ -30,8 +30,9 @@ export default () => (
 function onAppEnter() {
   return Promise.all([
     store.dispatch(receiveUsers()),
-    store.dispatch(receiveStories())
-  ])
+    store.dispatch(receiveStories()),
+    store.dispatch(retrieveLoggedInUser())
+  ]);
   // .then(() => {
   //   const { users, stories } = store.getState();
   // })

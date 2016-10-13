@@ -11,8 +11,10 @@ router.post('/login', function (req, res, next) {
         if (!user) {
           res.sendStatus(401);
         } else {
-          req.logIn(user);
-          res.sendStatus(204);
+          req.logIn(user, function (err) {
+              if (err) return next(err);
+              res.send(user);
+          });
         }
       });
 });
