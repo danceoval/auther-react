@@ -1,14 +1,14 @@
 import axios from 'axios';
+
 const RECEIVE_STORIES = 'RECEIVE_STORIES';
+
 const initialStories = [];
 
 /*
   ACTION CREATORS
 */
-const _receiveStories = stories => ({
-  type: RECEIVE_STORIES,
-  stories
-});
+const _receiveStories = stories => 
+  ({ type: RECEIVE_STORIES, stories })
 
 /*
   DISPATCHERS
@@ -16,7 +16,7 @@ const _receiveStories = stories => ({
 
 export const receiveStories = () => dispatch => 
     axios.get('/api/stories')
-      .then(res => dispatch(_receiveStories(res.data)));
+         .then(res => dispatch(_receiveStories(res.data)));
 
 /*
   REDUCER

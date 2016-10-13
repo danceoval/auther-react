@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const RECEIVE_USERS = 'RECEIVE_USERS',
-      DELETE_USER = 'DELETE_USER';
+      DELETE_USER = 'DELETE_USER',
+      ADD_USER = 'ADD_USER';
 
 const initialUsers = [];
 
@@ -11,6 +12,9 @@ const _receiveUsers = users =>
 
 const _removeUser = id => 
   ({ type: DELETE_USER, id })
+
+const _addUser = user => 
+  ({ type: ADD_USER, user })
 
 // DISPATCHERS
   // ** enabled by using the 'redux-thunk' middleware **
@@ -33,7 +37,12 @@ export const removeUser = id => dispatch => {
   axios.delete(`/api/users/${id}`)
        .catch(err => console.error(`Removing user: ${id} unsuccesful`, err))
 }
-      
+
+export const addUser = user => dispatch => {
+  dispatch(_addUser(user));
+  axios.post('/api/users/', user)
+       .catch(err => console.error(`Creating user: ${user} unsuccesful`, err))
+}
 
 // REDUCER
 export default function users (state = initialUsers, action) {
@@ -44,6 +53,9 @@ export default function users (state = initialUsers, action) {
 
     case DELETE_USER:
       return state.filter(user => user.id !== action.id);
+
+    case ADD_USER:
+      return [...state, action.user];
     
     default: 
       return state;
