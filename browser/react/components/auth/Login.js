@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+import auth from './auth';
+
 
 export default class extends React.Component {
 
@@ -26,6 +29,13 @@ export default class extends React.Component {
         e.preventDefault();
         // Call our action.
         console.log(this.state);
+        axios.post('/auth/login', this.state)
+            .then(this.toData)
+
+    }
+
+    toData(res) {
+        return res.data;
     }
 
     render() {
