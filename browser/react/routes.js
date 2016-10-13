@@ -35,34 +35,3 @@ function onAppEnter() {
   //   const { users, stories } = store.getState();
   // })
 }
-
-
-
-
-
-
-// import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-// import { fetchUsers, fetchStories, fetchCurrentUser } from './asyncRequests';
-// import Root from './components/Root';
-// import Home from './components/Home';
-// import UserList from './components/UserList';
-// import UserDetail from './components/UserDetail';
-// import StoriesList from './components/StoriesList';        
-
-// import React, { Component } from 'react';
-
-// export default class AutherRouter extends Component {
-//   render() {
-//     return (
-//       <Router history={browserHistory}>
-//         <Route path="/" component={Root}>
-//           <IndexRoute component={Home} />
-//           <Route path="users" component={UserList} />
-//           <Route path="users/:id" component={UserDetail} onEnter={fetchCurrentUser} />
-//           <Route path="stories" component={StoriesList} onEnter={fetchStories} />
-//           <Route path="*" component={Home} />
-//         </Route>
-//       </Router>
-//     );
-//   }
-// }

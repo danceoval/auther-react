@@ -2,10 +2,10 @@ import { connect } from'react-redux';
 import StoryDetail from './StoryDetail';
 import _ from 'lodash';
 
-const mapStateToProps = ({ stories }, ownProps) => {
+const mapStateToProps = ({ stories, users, currentUser }, ownProps) => {
   const id = Number(ownProps.params.id);
   const story = _.find(stories, story => story.id === id);
-  return { story }
+  return { story, users, currentUser }
 }
 
 

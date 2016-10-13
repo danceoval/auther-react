@@ -17,10 +17,7 @@ router.param('id', function (req, res, next, id) {
 });
 
 router.get('/', function (req, res, next) {
-  Story.findAll({
-    include: [{model: User, as: 'author'}],
-    attributes: {exclude: ['paragraphs']}
-  })
+  Story.findAll({ include: [{model: User, as: 'author'}] })
   .then(function (stories) {
     res.json(stories);
   })

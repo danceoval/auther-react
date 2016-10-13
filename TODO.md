@@ -22,9 +22,10 @@ Main Page
 
  STORIES
   DONE: List Stories
-  - Stories Detail Vie
-  - Select Author for Stories
+  DONE: Stories Detail Vie
+  DONE: Select Author for Stories
   - Search Stories
   - Delete Stories
   - Add Stories
   - Vulnerable to XSS
+  - cascading delete on author delete ? Server side also
