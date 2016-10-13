@@ -7,8 +7,8 @@ export default class extends React.Component {
     constructor() {
         super();
         this.state = {
-            email: 'omri@zeke.zeke',
-            password: '123'
+            email: '',
+            password: ''
         };
         // Bind event from node to component
         this.updateEmail = this.updateEmail.bind(this);
@@ -28,10 +28,6 @@ export default class extends React.Component {
         e.preventDefault();
         // Call our action.
         store.dispatch(login(this.state));
-    }
-
-    toData(res) {
-        return res.data;
     }
 
     render() {
