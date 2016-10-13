@@ -21,7 +21,8 @@ Main Page
   -Github
 
  STORIES
-  - List Stories
+  DONE: List Stories
+  - Select Author for Stories
   - Search Stories
   - Delete Stories
   - Add Stories

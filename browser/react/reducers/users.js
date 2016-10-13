@@ -19,7 +19,7 @@ const _addUser = user =>
 // DISPATCHERS
   // ** enabled by using the 'redux-thunk' middleware **
   //
-  // Dispatchers are: ane async request + an action creator + a dispatch event
+  // Dispatchers are: an async request + an action creator + a dispatch event
   // Dispatchers allow you to call store.dispatch with a *function*
   // the function is expected to *eventually* dispatch an action to the store,
   // but need not do so immediately.
