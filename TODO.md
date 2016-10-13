@@ -16,6 +16,7 @@ Main Page
   -Github
 
  LOG IN
+  DONE: Vanilla
   -Twitter
   -G+
   -Github
@@ -28,3 +29,7 @@ Main Page
   - Delete Stories
   - Add Stories
   - Vulnerable to XSS
+
+  HIGH PRIORITY
+   - Oauth Signup/Login
+   - Add Stories w/XSS
