@@ -43,7 +43,6 @@ export const addUser = user => dispatch => {
   axios.post('/api/users/', user)
        .catch(err => console.error(`Creating user: ${user} unsuccesful`, err))
 }
-      
 
 // REDUCER
 export default function users (state = initialUsers, action) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import store from './store';
-import Promise from 'bluebird';
 import App from './components/App';
 import Home from './components/Home';
 import UsersListContainer from './components/users/UsersListContainer';
@@ -29,17 +28,12 @@ export default () => (
 
 function onAppEnter() {
   return Promise.all([
-    store.dispatch(receiveUsers())
+    store.dispatch(receiveUsers()),
+    store.dispatch(receiveStories())
   ])
-  .spread(({users}) => {
-    // for testing user existing
-    // store.dispatch(setCurrentUser(users[0]))
-  })
-  .then(() => {
-    return Promise.all([
-      store.dispatch(receiveStories())
-    ]).spread(({stories}) => {})
-  });
+  // .then(() => {
+  //   const { users, stories } = store.getState();
+  // })
 }
 
 
