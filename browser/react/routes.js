@@ -6,9 +6,9 @@ import App from './components/App';
 import Home from './components/Home';
 import UsersListContainer from './components/users/UsersListContainer';
 import UserDetailContainer from './components/users/UserDetailContainer';
+import StoriesContainer from './components/stories/StoriesContainer';
 import { receiveUsers } from './reducers/users';
-// import { receiveStories } from './reducers/users';
-
+import { receiveStories } from './reducers/stories';
 import { setCurrentUser } from './reducers/currentUser';
 
 
@@ -18,6 +18,7 @@ export default () => (
       <IndexRoute component={Home} />
       <Route path="users" component={UsersListContainer} />
       <Route path="users/:id" component={UserDetailContainer} />
+      <Route path="stories" component={StoriesContainer} />
       // all other routes redirect to Home
       <Route path="*" component={Home} /> 
     </Route>
@@ -31,6 +32,11 @@ function onAppEnter() {
   .spread(({users}) => {
     // for testing user existing
     // store.dispatch(setCurrentUser(users[0]))
+  })
+  .then(() => {
+    return Promise.all([
+      store.dispatch(receiveStories())
+    ]).spread(({stories}) => {})
   });
 }
 

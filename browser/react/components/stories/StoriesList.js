@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 //import StoryDetail from './StoryDetail';
 import { connect } from 'react-redux';
 
-class StoriesList extends Component {
-  render() {
-    const {stories} = this.props;
-    console.log("sss", stories)
-    return (  
+export default ({ stories })=> (  
       <div className="container">
         <div className="list-group-item story-item">
           <ul className="list-inline">
@@ -72,14 +68,6 @@ class StoriesList extends Component {
       </div>
       
     );
-  }
-}
-
-const mapStateToProps = ({ stories }, { children }) => ({ stories, children });
-
-
-export default connect(mapStateToProps)(StoriesList);
-
-         
+ 
 
 
