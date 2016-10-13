@@ -21,12 +21,18 @@ export const login = (credentials) => dispatch =>
     axios.post('/auth/login', credentials)
         .then(res => dispatch(setCurrentUser(res.data)));
 
+export const signup = (credentials) => dispatch =>
+    axios.post('/auth/signup', credentials)
+        .then(res => dispatch(setCurrentUser(res.data)));
+
 export const retrieveLoggedInUser = () => dispatch =>
     axios.get('/auth/me')
         .then(res => dispatch(setCurrentUser(res.data)));
 
 export const removeLoggedInUser = () => dispatch =>
-    dispatch(setCurrentUser(null))      
+  axios.post('/auth/logout', credentials)  
+    .then(res => dispatch(setCurrentUser(null)))
+        
 
 export default function currentUser (state = initialCurrentUser, action) {
   switch (action.type) {

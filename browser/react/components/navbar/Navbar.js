@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import {setCurrentUser} from '../../reducers/auth';
 import  store from '../../store';
-console.log('ss', setCurrentUser)
 
 
 export default ({currentUser}) => (

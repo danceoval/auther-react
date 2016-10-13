@@ -31,5 +31,5 @@ Main Page
   - Vulnerable to XSS
 
   HIGH PRIORITY
-   - Oauth Signup/Login
+   DONE: Oauth Signup/Login
    - Add Stories w/XSS

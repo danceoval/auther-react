@@ -34,10 +34,12 @@ router.post('/signup', function (req, res, next) {
       password: req.body.password
     }
   })
-      .spread(function (user) {
-        req.logIn(user);
-        res.send(user);
-      });
+  .spread(function (user) {
+    req.logIn(user, function(err) {
+      if(err) return next(err);
+      res.send(user)
+    });
+  });
 
 });
 

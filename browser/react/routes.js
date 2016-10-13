@@ -4,6 +4,7 @@ import store from './store';
 import App from './components/App';
 import Home from './components/Home';
 import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
 import UsersListContainer from './components/users/UsersListContainer';
 import UserDetailContainer from './components/users/UserDetailContainer';
 import StoriesContainer from './components/stories/StoriesContainer';
@@ -21,6 +22,7 @@ export default () => (
       <Route path="stories" component={StoriesContainer} />
       <Route path="stories/:id" component={StoryDetailContainer} />
       <Route path="login" component={Login} />
+      <Route path="signup" component={Signup} />
       // all other routes redirect to Home
       <Route path="*" component={Home} /> 
     </Route>
