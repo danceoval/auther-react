@@ -22,6 +22,7 @@ Main Page
 
  STORIES
   DONE: List Stories
+  - Stories Detail Vie
   - Select Author for Stories
   - Search Stories
   - Delete Stories

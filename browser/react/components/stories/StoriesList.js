@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import StoryDetail from './StoryDetail';
+import {Link} from 'react-router';
 import { connect } from 'react-redux';
 
 export default ({ stories })=> (  
@@ -45,23 +45,26 @@ export default ({ stories })=> (
           </li>
             {  
               stories.map((story, index) => (
-
-                <li className="list-group-item story-item">
-                  <ul className="list-inline">
-                    <li>
-                      <a className="large-font" >{ story.title }</a>
-                    </li>
-                    <li>
-                      <span>by</span>
-                    </li>
-                    <li>
-                      <span >{story.author_id}</span>
-                    </li>
-                  </ul>
-                  <button className="btn btn-default btn-xs">
-                    <span className="glyphicon glyphicon-remove"></span>
-                  </button>
-                </li>
+                 
+                  <li className="list-group-item story-item">
+                    <ul className="list-inline">
+                      <Link  activeClassName="active" to={`/stories/${story.id}`}>
+                        <li>
+                          <a className="large-font" >{ story.title }</a>
+                        </li>
+                        <li>
+                          <span>by</span>
+                        </li>
+                        <li>
+                          <span >Author #{story.author_id}</span>
+                        </li>
+                      </Link>   
+                    </ul>
+                    <button className="btn btn-default btn-xs">
+                      <span className="glyphicon glyphicon-remove"></span>
+                    </button>
+                  </li>
+                 
               )) 
             }  
         </ul>
