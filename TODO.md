@@ -16,13 +16,14 @@ Main Page
   -Github
 
  LOG IN
+  DONE: Vanilla
   -Twitter
   -G+
   -Github
 
  STORIES
   DONE: List Stories
-  DONE: Stories Detail Vie
+  DONE: Stories Detail View
   DONE: Select Author for Stories
   - Search Stories
   - Delete Stories
@@ -34,3 +35,8 @@ VISIBILITY CONTROLS
  - Stories are globally editable 
  - Logged in user may delete their own story/edit own profile info
  - Admins may delete any story/user
+
+
+HIGH PRIORITY
+ DONE: Oauth Signup/Login
+ - Add Stories w/XSS

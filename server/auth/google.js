@@ -8,8 +8,8 @@ module.exports = router;
 // BASE PATH: /auth/google
 
 passport.use(new GoogleStrategy({
-      clientID: '22375999626-mrtrn26rb8os2mgid721fvgjs1l1o4h6.apps.googleusercontent.com',
-      clientSecret: 'TdyfRz0X4wa7YYiJGO6jZWUP',
+      clientID: '684619883667-k30621ulprrmei5fsot3j4i5kgunj3b3.apps.googleusercontent.com',
+      clientSecret: '3uDb9Ua__hThXVQd7arkiRBe',
       callbackURL: '/auth/google/callback'
     },
     // Google will send back the token and profile

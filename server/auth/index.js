@@ -11,8 +11,10 @@ router.post('/login', function (req, res, next) {
         if (!user) {
           res.sendStatus(401);
         } else {
-          req.logIn(user);
-          res.sendStatus(204);
+          req.logIn(user, function (err) {
+              if (err) return next(err);
+              res.send(user);
+          });
         }
       });
 });
@@ -32,10 +34,12 @@ router.post('/signup', function (req, res, next) {
       password: req.body.password
     }
   })
-      .spread(function (user) {
-        req.logIn(user);
-        res.send(user);
-      });
+  .spread(function (user) {
+    req.logIn(user, function(err) {
+      if(err) return next(err);
+      res.send(user)
+    });
+  });
 
 });
 
