@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router';
+import {setCurrentUser} from '../../reducers/auth'; 
 
-export default ({user, removeUser, glyphicon}) => {
+export default ({user, removeUser, glyphicon, currentUser}) => {
 	// what to render if user isn't there
-	// not sure how to get resolve functionality
-	if (!user) return <div></div>
+	if (!user) return <div><h2>Log in to continue</h2></div>
+	
 	return (
 		<div className="media">
 		  <div className="media-left media-middle icon-container">
@@ -44,6 +45,9 @@ export default ({user, removeUser, glyphicon}) => {
 		      </span>
 		    </h5>
 		  </Link> 
+		  {
+		  	//Visibility Control for logged in user
+		  	currentUser ?
 			<div className="media-right media-middle">
 				<button className="btn btn-default" 
 								onClick={event => {
@@ -54,6 +58,8 @@ export default ({user, removeUser, glyphicon}) => {
 				  <span className="glyphicon glyphicon-remove"></span>
 				</button>
 			</div>
+			: <div className="media-right media-middle"><br/></div>
+		}
 		</div>
 	)
 }

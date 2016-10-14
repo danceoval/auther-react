@@ -3,7 +3,8 @@ import UserItem from './UserItem';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-export default ({user}) => (
+
+export default ({user, currentUser}) => (
 	<div className="container">
  		<UserItem user={user}></UserItem>
 	  <div className="panel panel-warning">
@@ -19,12 +20,11 @@ export default ({user}) => (
 	        </button>
 	      </p>
 	      <p  className="list-group-item story-item">
-	        <a>
-	         
-	        </a>
+	      
 	        <button className="btn btn-default btn-xs">
 	          <span className="glyphicon glyphicon-remove"></span>
 	        </button>
+	       
 	      </p>
 	    </ul>
 	  </div>

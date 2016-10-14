@@ -3,10 +3,10 @@ import UserDetail from './UserDetail';
 import _ from 'lodash';
 import { removeUser } from '../../reducers/users';
 
-const mapStateToProps = ({ users }, ownProps) => {
+const mapStateToProps = ({ users, currentUser }, ownProps) => {
   const id = Number(ownProps.params.id);
   const user = _.find(users, user => user.id === id);
-  return { user }
+  return { user, currentUser }
 }
 
 const mapDispatchToProps = { removeUser }

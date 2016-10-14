@@ -36,7 +36,7 @@ export default class extends React.Component {
     store.dispatch(addUser(this.state));
   }
   render() {
-    const { users, removeUser } = this.props;
+    const { users, removeUser, currentUser } = this.props;
     return (
       <div className="container">
         {/* USER QUERY - LOOK INTO FOR FIXING */}
@@ -70,7 +70,8 @@ export default class extends React.Component {
               <div className="media-right media-middle"></div>
             </div>
           </div>
-          {/* ADD */}
+          {/* ADD */
+            currentUser ? 
           <div className="list-group-item min-content user-item">
             <div className="media">
               <div className="media-left media-middle icon-container">
@@ -105,6 +106,8 @@ export default class extends React.Component {
               <div className="media-right media-middle"></div>
             </div>
           </div>
+          : <div></div>
+          }
         {/* END OF QUERY SEARCH */}
         </div>
         <br />
@@ -113,7 +116,7 @@ export default class extends React.Component {
         {  
           users.map((user, index) => (
             <div key={index} className="list-group-item min-content user-item">
-              <UserItem user={user} removeUser={removeUser}/>
+              <UserItem user={user} removeUser={removeUser} currentUser={currentUser}/>
             </div> 
           )) 
         }
