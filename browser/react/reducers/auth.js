@@ -10,12 +10,6 @@ export const setCurrentUser = user => ({
   user
 });
 
-
-export const removeCurrentUser = user => ({
-  type: REMOVE_CURRENT_USER,
-  user
-});
-
 export const login = (credentials) => dispatch =>
     axios.post('/auth/login', credentials)
         .then(res => dispatch(setCurrentUser(res.data)));
@@ -29,19 +23,17 @@ export const retrieveLoggedInUser = () => dispatch =>
         .then(res => dispatch(setCurrentUser(res.data)))
         .catch(err => console.error("nobody is logged in", err));
 
-export const removeLoggedInUser = () => dispatch =>
-  axios.post('/auth/logout', credentials)  
-    .then(res => dispatch(setCurrentUser(null)))
-        
+export const logout = () => dispatch => {
+  dispatch(setCurrentUser(null))
+  axios.get('/auth/logout') 
+       .catch(err => console.error("cannot log out", err));
+}         
 
 export default function currentUser (state = initialCurrentUser, action) {
   switch (action.type) {
     
     case SET_CURRENT_USER: 
       return action.user;
-
-    case REMOVE_CURRENT_USER: 
-      return action.user;  
 
     default: return state;
   }
