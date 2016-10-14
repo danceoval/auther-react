@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ContentEditable from "react-contenteditable";
 import {Link} from 'react-router';
 import NewStoryWidgetContainer from './NewStoryWidgetContainer';
-import _ from 'lodash';
 
 export default class StoriesList extends Component {
   constructor(props) {
@@ -57,13 +56,11 @@ export default class StoriesList extends Component {
     );
   }
 
-  filterStoryItem(story) {
-    const { author, title } = story;
-    const { search_author, search_title } = this.state;
-    const authorMatch = _.includes(author.name, search_author);
-    const titleMatch = _.includes(title, search_title);
+  filterStoryItem({author, title}) {
+    const authorMatch = new RegExp(this.state.search_author, 'i');
+    const titleMatch = new RegExp(this.state.search_title, 'i');
 
-    return authorMatch && titleMatch;
+    return authorMatch.test(author.name) && titleMatch.test(title);
   } 
 
   renderStoryItem(story, index) {

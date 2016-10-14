@@ -19,14 +19,16 @@ export const receiveStories = () => dispatch => {
          .then(res => dispatch(_receiveStories(res.data)));
 }
 
+// delete is optimistic: it deletes from the front-end, then the backend (hopefully)
 export const removeStory = id => dispatch => { 
     dispatch(_removeStory(id));
     axios.delete(`/api/stories/${id}`)
          .catch(err => console.error(`Removing story: ${id} unsuccesful`, err))
 }
 
+// can't add optomistically because we get the associated author data from the backend
+// this could be updated through the uses of our users reducer, but then we couldn't split up our store
 export const addStory = story => dispatch => {
-    console.log(story)
     axios.post('/api/stories', story)
          .then(res => res.data)
          .then(story => dispatch(_addStory(story)))
@@ -43,7 +45,8 @@ export default function stories (state = initialStories, action) {
     case DELETE_STORY:
       return state.filter(story => story.id !== action.id);
 
-    case ADD_STORY: 
+    case ADD_STORY:
+      // we'll all out new story to the front just to see it immediately 
       return [action.story, ...state];
     
     default: 
