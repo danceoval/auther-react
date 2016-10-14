@@ -86,7 +86,7 @@ export default class extends React.Component {
                   </input >
                 </h4>
                 <h5 className="tucked">
-                  <input  contentEditable
+                  <input contentEditable
                        placeholder="email@website.com"
                        className="form-like"
                        value={this.state.email}
@@ -94,7 +94,7 @@ export default class extends React.Component {
                   </input >
                 </h5>
                 <h5 className="tucked">
-                  <input  contentEditable
+                  <input contentEditable
                     placeholder="(555) 555-5555"
                     className="form-like"
                     value={this.state.phone}

@@ -29,8 +29,8 @@ router.post('/', function (req, res, next) {
   .then(function (story) {
     return story.reload({include: [{model: User, as: 'author'}]});
   })
-  .then(function (includingAuthor) {
-    res.status(201).json(includingAuthor);
+  .then(function (story) {
+    res.status(201).json(story);
   })
   .catch(next);
 });

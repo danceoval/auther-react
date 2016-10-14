@@ -16,7 +16,6 @@ export const removeCurrentUser = user => ({
   user
 });
 
-
 export const login = (credentials) => dispatch =>
     axios.post('/auth/login', credentials)
         .then(res => dispatch(setCurrentUser(res.data)));
@@ -27,7 +26,8 @@ export const signup = (credentials) => dispatch =>
 
 export const retrieveLoggedInUser = () => dispatch =>
     axios.get('/auth/me')
-        .then(res => dispatch(setCurrentUser(res.data)));
+        .then(res => dispatch(setCurrentUser(res.data)))
+        .catch(err => console.error("nobody is logged in", err));
 
 export const removeLoggedInUser = () => dispatch =>
   axios.post('/auth/logout', credentials)  
