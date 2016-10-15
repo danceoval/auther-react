@@ -15,11 +15,10 @@ export default class extends Component {
     this.filterUserItem = this.filterUserItem.bind(this);
     this.renderUser = this.renderUser.bind(this);
     this.validateUser = this.validateUser.bind(this);
-
   }
 
   render() {
-    const { users, removeUser, currentUser } = this.props;
+    const { users, currentUser } = this.props;
     return (
       <div className="container">
         <div className="user-query">
@@ -30,25 +29,25 @@ export default class extends Component {
               </div>
               <div className="media-body">
                 <h4 className="media-heading tucked">
-                  <span contentEditable
-                    ref="name"
+                  <ContentEditable
                     placeholder="Jean Doe"
-                    className="form-like">
-                    </span>
+                    className="form-like"
+                    onChange={e => this.setState({ search_name: e.target.value })}
+                  />
                 </h4>
                 <h5 className="tucked">
-                  <span contentEditable
-                     ref="email"
+                  <ContentEditable
                      placeholder="email@website.com"
-                     className="form-like">
-                     </span>
+                     className="form-like"
+                     onChange={e => this.setState({ search_email: e.target.value })}
+                  />
                 </h5>
                 <h5 className="tucked">
-                  <span contentEditable
-                    ref="phone"
+                  <ContentEditable
                     placeholder="(555) 555-5555"
-                    className="form-like">
-                    </span>
+                    className="form-like"
+                    onChange={e => this.setState({ search_phone: e.target.value })}
+                  />
                 </h5>
               </div>
               <div className="media-right media-middle"></div>
@@ -63,25 +62,25 @@ export default class extends Component {
                   </div>
                   <div className="media-body">
                     <h4 className="media-heading tucked">
-                      <ContentEditable
+                      <span contentEditable 
+                            ref="name"
                             placeholder="Jean Doe"
-                            className="form-like" 
-                            onChange={e => this.setState({ new_name: e.target.value })}
-                      />
+                            className="form-like"> 
+                      </span>
                     </h4>
                     <h5 className="tucked">
-                      <ContentEditable
-                           placeholder="email@website.com"
-                           className="form-like"
-                           onChange={e => this.setState({ new_email: e.target.value })}  
-                      />
+                      <span contentEditable 
+                            ref="email"
+                            placeholder="email@website.com"
+                            className="form-like">
+                      </span>
                     </h5>
                     <h5 className="tucked">
-                      <ContentEditable
-                        placeholder="(555) 555-5555"
-                        className="form-like"
-                        onChange={e => this.setState({ new_phone: e.target.value })}  
-                      />
+                      <span contentEditable 
+                            ref="phone"
+                            placeholder="(555) 555-5555"
+                            className="form-like">
+                      </span>
                     </h5>
                   </div>
                   <div className="media-right media-middle"></div>
@@ -103,19 +102,24 @@ export default class extends Component {
     );
   }
 
-  filterUserItem({email, name, phone}) {
-    const emailMatch = new RegExp(this.state.search_email, 'i');
-    const nameMatch = new RegExp(this.state.search_name, 'i');
-    const phoneMatch = new RegExp(this.state.search_phone, 'i');
+  filterUserItem(story) {
+    const {email, name, phone} = story;
+    const { search_email, search_name, search_phone } = this.state;
 
-    return emailMatch.test(email) && nameMatch.test(name) && phoneMatch.test(phone);
+    const emailMatch = new RegExp(search_email, 'i');
+    const nameMatch  = new RegExp(search_name, 'i');
+    const phoneMatch = new RegExp(search_phone, 'i');
+
+    return emailMatch.test(email) 
+        && nameMatch.test(name) 
+        && phoneMatch.test(phone);
   } 
 
   renderUser(user, index) {
-    const { removeUser } = this.props;
+    const { removeUser, currentUser } = this.props;
     return (
       <div key={index} className="list-group-item min-content user-item">
-        <UserItem user={user} removeUser={removeUser}/>
+        <UserItem user={user} removeUser={removeUser} currentUser={currentUser}/>
       </div> 
     )
   }
@@ -127,9 +131,7 @@ export default class extends Component {
       phone: this.refs.phone.innerText,
       email: this.refs.email.innerText
     }
-
-    console.log(user)
-
+    
     // only dispatch if valid
     if (user.name && user.phone && user.email) {
       this.props.addUser(user);
