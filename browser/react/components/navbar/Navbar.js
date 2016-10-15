@@ -17,7 +17,7 @@ export default ({currentUser}) => (
           <span className="icon-bar"></span>
           <span className="icon-bar"></span>
         </button>
-        <Link className="navbar-brand" to="/"><img src="logo.png" /></Link>
+        <Link className="navbar-brand" to="/"><img src="/logo.png" /></Link>
       </div>
 
       <div className="collapse navbar-collapse">

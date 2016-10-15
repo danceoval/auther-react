@@ -2,16 +2,17 @@ import axios from 'axios';
 
 const RECEIVE_STORIES = 'RECEIVE_STORIES',
       DELETE_STORY = 'DELETE_STORY',
-      ADD_STORY = 'ADD_STORY';
+      ADD_STORY = 'ADD_STORY',
+      UPDATE_STORY = 'UPDATE_STORY';
 
 const initialStories = [];
 
 // ACTION CREATORS
 const _receiveStories = stories => ({ type: RECEIVE_STORIES, stories })
-
 const _removeStory = id => ({ type: DELETE_STORY, id })
-
 const _addStory = story => ({ type: ADD_STORY, story })
+const _updateStory = (id, story) => ({ type: UPDATE_STORY, id, story })
+
 
 // DISPATCHERS
 export const receiveStories = () => dispatch => {
@@ -35,6 +36,12 @@ export const addStory = story => dispatch => {
          .catch(err => console.error(`Creating story: ${story} unsuccesful`, err))
 }
 
+export const updateStory = (id, story) => dispatch => {
+    dispatch(_updateStory(id, story));
+    axios.put(`/api/stories/${id}`, story)
+         .catch(err => console.error(`Creating story: ${story} unsuccesful`, err))
+}
+
 // REDUCER
 export default function stories (state = initialStories, action) {
   switch (action.type) {
@@ -49,6 +56,10 @@ export default function stories (state = initialStories, action) {
       // we'll all out new story to the front just to see it immediately 
       return [action.story, ...state];
     
+    case UPDATE_STORY:
+      return state.map(story => (story.id === action.id) ?
+          Object.assign({}, story, action.story) : story);
+
     default: 
       return state;
   }

@@ -1,8 +1,13 @@
-<!-- 
 DONE: Main Page
+<!--  
  - DONE: Basic main page renders
  - DONE: renders correct buttons if logged in or not 
- -->
+ - DONE: not signed in by default
+ - DONE: Signup works
+ - DONE: Signup persists on reload -->
+ - Need to redirect on succesful signup to a different page
+ - Signup with Google is missing, though Login with google exists?
+
 
  USER LIST
 <!--   
@@ -12,7 +17,7 @@ DONE: Main Page
 -->
   - User filter
   - Add User
-  - remove only for admins
+  - ** remove only for admins **
 
 USER DETAIL
 <!--   

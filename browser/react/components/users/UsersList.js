@@ -1,47 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import UserItem from './UserItem';
 import { Link } from 'react-router';
-import {addUser} from '../../reducers/users';
-import store from '../../store';
+import ContentEditable from "react-contenteditable";
 
+export default class extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        search_name: '',
+        search_email: '',
+        search_phone: ''
+    };
 
-export default class extends React.Component {
-  constructor() {
-        super();
-        this.state = {
-            email: '',
-            name : '',
-            phone : '',
-            password: '123'
-        };
-        // Bind event from node to component
-        this.updateEmail = this.updateEmail.bind(this);
-        this.updatePhone = this.updatePhone.bind(this);
-        this.updateName = this.updateName.bind(this);
-        this.submitUser = this.submitUser.bind(this);
-    }
+    this.filterUserItem = this.filterUserItem.bind(this);
+    this.renderUser = this.renderUser.bind(this);
+    this.validateUser = this.validateUser.bind(this);
 
-  updateEmail(e) {
-      this.setState({ email: e.target.value });  
   }
 
-  updateName(e) {
-     this.setState({ name: e.target.value });     
-  }
-
-  updatePhone(e) {
-      this.setState({ phone : e.target.value });     
-  }
-  submitUser(e) {
-    store.dispatch(addUser(this.state));
-  }
   render() {
-    const { users, removeUser } = this.props;
     return (
       <div className="container">
-        {/* USER QUERY - LOOK INTO FOR FIXING */}
         <div className="user-query">
-          {/* SEARCH */}
           <div className="list-group-item min-content user-item">
             <div className="media">
               <div className="media-left media-middle icon-container">
@@ -49,78 +29,110 @@ export default class extends React.Component {
               </div>
               <div className="media-body">
                 <h4 className="media-heading tucked">
-                  <div contentEditable
-                        placeholder="Jean Doe"
-                        className="form-like">
-                  </div>
+                  <span contentEditable
+                    ref="name"
+                    placeholder="Jean Doe"
+                    className="form-like">
+                    </span>
                 </h4>
                 <h5 className="tucked">
-                  <div contentEditable
-                       placeholder="email@website.com"
-                       className="form-like">
-                  </div>
+                  <span contentEditable
+                     ref="email"
+                     placeholder="email@website.com"
+                     className="form-like">
+                     </span>
                 </h5>
                 <h5 className="tucked">
-                  <div contentEditable
+                  <span contentEditable
+                    ref="phone"
                     placeholder="(555) 555-5555"
                     className="form-like">
-                  </div>
+                    </span>
                 </h5>
               </div>
               <div className="media-right media-middle"></div>
             </div>
           </div>
-          {/* ADD */}
           <div className="list-group-item min-content user-item">
             <div className="media">
               <div className="media-left media-middle icon-container">
-                <span className="glyphicon glyphicon-plus clickable"  onClick={this.submitUser}></span>
+                <span className="glyphicon glyphicon-plus clickable"  onClick={this.validateUser}></span>
               </div>
               <div className="media-body">
                 <h4 className="media-heading tucked">
-                  <input contentEditable
+                  <ContentEditable
                         placeholder="Jean Doe"
                         className="form-like" 
-                        value={this.state.name} 
-                        onChange={this.updateName} >
-                  </input >
+                        onChange={e => this.setState({ new_name: e.target.value })}
+                  />
                 </h4>
                 <h5 className="tucked">
-                  <input contentEditable
+                  <ContentEditable
                        placeholder="email@website.com"
                        className="form-like"
-                       value={this.state.email}
-                       onChange={this.updateEmail}>
-                  </input >
+                       onChange={e => this.setState({ new_email: e.target.value })}  
+                  />
                 </h5>
                 <h5 className="tucked">
-                  <input contentEditable
+                  <ContentEditable
                     placeholder="(555) 555-5555"
                     className="form-like"
-                    value={this.state.phone}
-                    onChange={this.updatePhone}>
-                  </input >
+                    onChange={e => this.setState({ new_phone: e.target.value })}  
+                  />
                 </h5>
               </div>
               <div className="media-right media-middle"></div>
             </div>
           </div>
-        {/* END OF QUERY SEARCH */}
         </div>
         <br />
         <br />
         <div className="user-list">
         {  
-          users.map((user, index) => (
-            <div key={index} className="list-group-item min-content user-item">
-              <UserItem user={user} removeUser={removeUser}/>
-            </div> 
-          )) 
+          this.props.users
+            .filter(this.filterUserItem)
+            .map(this.renderUser)
         }
         </div>
-        
       </div>
-     );
+    );
+  }
+
+  filterUserItem({email, name, phone}) {
+    const emailMatch = new RegExp(this.state.search_email, 'i');
+    const nameMatch = new RegExp(this.state.search_name, 'i');
+    const phoneMatch = new RegExp(this.state.search_phone, 'i');
+
+    return emailMatch.test(email) && nameMatch.test(name) && phoneMatch.test(phone);
+  } 
+
+  renderUser(user, index) {
+    const { removeUser } = this.props;
+    return (
+      <div key={index} className="list-group-item min-content user-item">
+        <UserItem user={user} removeUser={removeUser}/>
+      </div> 
+    )
+  }
+
+  validateUser() {
+    console.log(this.refs)
+    const user = {
+      name: this.refs.name.innerText,
+      phone: this.refs.phone.innerText,
+      email: this.refs.email.innerText
     }
+
+    console.log(user)
+
+    // only dispatch if valid
+    if (user.name && user.phone && user.email) {
+      this.props.addUser(user);
+      // reset inputs
+      this.refs.name.innerText = ""
+      this.refs.phone.innerText = ""
+      this.refs.email.innerText = ""
+    }
+  }
 }
 

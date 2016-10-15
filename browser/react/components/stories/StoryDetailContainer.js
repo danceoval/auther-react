@@ -1,5 +1,7 @@
 import { connect } from'react-redux';
 import StoryDetail from './StoryDetail';
+import { updateStory } from '../../reducers/stories';
+
 import _ from 'lodash';
 
 const mapStateToProps = ({ stories, users, currentUser }, ownProps) => {
@@ -8,9 +10,12 @@ const mapStateToProps = ({ stories, users, currentUser }, ownProps) => {
   return { story, users, currentUser }
 }
 
+const mapDispatchToProps = { updateStory }
+
 
 const StoryDetailContainer = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(StoryDetail);
 
 export default StoryDetailContainer;
