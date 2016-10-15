@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
-import {setCurrentUser} from '../../reducers/auth';
-import  store from '../../store';
 
-
-export default ({currentUser}) => (
+export default ({ currentUser, logout }) => (
   <nav className="navbar navbar-default">
     <div className="container">
       <div className="navbar-header">
@@ -43,7 +40,7 @@ export default ({currentUser}) => (
             <ul className="nav navbar-nav navbar-right">
               <li>
               <button className="navbar-btn btn btn-default" 
-                onClick={() => store.dispatch(setCurrentUser(null))}>logout</button>
+                onClick={logout}>logout</button>
               </li>
             </ul>
         }

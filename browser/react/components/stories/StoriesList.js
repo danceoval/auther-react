@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ContentEditable from "react-contenteditable";
 import {Link} from 'react-router';
 import NewStoryWidgetContainer from './NewStoryWidgetContainer';
+import _ from 'lodash';
 
 export default class StoriesList extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export default class StoriesList extends Component {
   }
 
   render() {
-    const { stories } = this.props;
+    const { stories, currentUser } = this.props;
     return (  
       <div className="container">
         { /* SEARCH */}
@@ -44,8 +45,12 @@ export default class StoriesList extends Component {
         </div>
         { /* END SEARCH */}
         <br />
+
         <ul className="list-group">
+        { currentUser ?
           <NewStoryWidgetContainer />
+          : <div></div>
+        }
           { 
             stories
               .filter(this.filterStoryItem) 
@@ -56,15 +61,17 @@ export default class StoriesList extends Component {
     );
   }
 
-  filterStoryItem({author, title}) {
-    const authorMatch = new RegExp(this.state.search_author, 'i');
-    const titleMatch = new RegExp(this.state.search_title, 'i');
+  filterStoryItem(story) {
+    const { author, title } = story;
+    const { search_author, search_title } = this.state;
+    const authorMatch = _.includes(author.name, search_author);
+    const titleMatch = _.includes(title, search_title);
 
-    return authorMatch.test(author.name) && titleMatch.test(title);
+    return authorMatch && titleMatch;
   } 
 
   renderStoryItem(story, index) {
-    const { removeStory } = this.props;
+    const { removeStory, currentUser } = this.props;
 
     return (
       <li key={index} 
@@ -80,9 +87,12 @@ export default class StoriesList extends Component {
             <Link to={`/users/${story.author_id}`}>{story.author.name}</Link>
           </li>
         </ul>
+        { currentUser ?
         <button className="btn btn-default btn-xs" onClick={ () => removeStory(story.id) }>
           <span className="glyphicon glyphicon-remove"></span>
         </button>
+        : <div></div>
+        }
       </li>
     );
   }

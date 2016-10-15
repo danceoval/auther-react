@@ -19,6 +19,7 @@ export default class extends Component {
   }
 
   render() {
+    const { users, removeUser, currentUser } = this.props;
     return (
       <div className="container">
         <div className="user-query">
@@ -53,43 +54,47 @@ export default class extends Component {
               <div className="media-right media-middle"></div>
             </div>
           </div>
-          <div className="list-group-item min-content user-item">
-            <div className="media">
-              <div className="media-left media-middle icon-container">
-                <span className="glyphicon glyphicon-plus clickable"  onClick={this.validateUser}></span>
+          {            
+            currentUser ? 
+              <div className="list-group-item min-content user-item">
+                <div className="media">
+                  <div className="media-left media-middle icon-container">
+                    <span className="glyphicon glyphicon-plus clickable"  onClick={this.validateUser}></span>
+                  </div>
+                  <div className="media-body">
+                    <h4 className="media-heading tucked">
+                      <ContentEditable
+                            placeholder="Jean Doe"
+                            className="form-like" 
+                            onChange={e => this.setState({ new_name: e.target.value })}
+                      />
+                    </h4>
+                    <h5 className="tucked">
+                      <ContentEditable
+                           placeholder="email@website.com"
+                           className="form-like"
+                           onChange={e => this.setState({ new_email: e.target.value })}  
+                      />
+                    </h5>
+                    <h5 className="tucked">
+                      <ContentEditable
+                        placeholder="(555) 555-5555"
+                        className="form-like"
+                        onChange={e => this.setState({ new_phone: e.target.value })}  
+                      />
+                    </h5>
+                  </div>
+                  <div className="media-right media-middle"></div>
+                </div>
               </div>
-              <div className="media-body">
-                <h4 className="media-heading tucked">
-                  <ContentEditable
-                        placeholder="Jean Doe"
-                        className="form-like" 
-                        onChange={e => this.setState({ new_name: e.target.value })}
-                  />
-                </h4>
-                <h5 className="tucked">
-                  <ContentEditable
-                       placeholder="email@website.com"
-                       className="form-like"
-                       onChange={e => this.setState({ new_email: e.target.value })}  
-                  />
-                </h5>
-                <h5 className="tucked">
-                  <ContentEditable
-                    placeholder="(555) 555-5555"
-                    className="form-like"
-                    onChange={e => this.setState({ new_phone: e.target.value })}  
-                  />
-                </h5>
-              </div>
-              <div className="media-right media-middle"></div>
-            </div>
-          </div>
+            : <div></div>
+          }
         </div>
         <br />
         <br />
         <div className="user-list">
         {  
-          this.props.users
+          users
             .filter(this.filterUserItem)
             .map(this.renderUser)
         }
