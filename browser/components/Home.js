@@ -22,7 +22,7 @@ export default () => (
         <div className="container">
           <div className="media large-font">
             <div className="media-left media-middle">
-              <img className="media-object" src="images/stock-footage-old-typewriter.jpg" />
+              <img className="media-object" src="/images/stock-footage-old-typewriter.jpg" />
             </div>
             <div className="media-body">
               <p className="media-heading large-font">Some hipster ipsum</p>
@@ -38,7 +38,7 @@ export default () => (
               <span>Hoodie taxidermy Brooklyn bitters, XOXO forage typewriter single-origin coffee. Slow-carb try-hard hashtag mlkshk narwhal sartorial.</span>
             </div>
             <div className="media-right media-middle">
-              <img className="media-object" src="images/stock-footage-old-man.jpg" />
+              <img className="media-object" src="/images/stock-footage-old-man.jpg" />
             </div>
           </div>
         </div>

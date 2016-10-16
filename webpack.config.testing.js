@@ -4,10 +4,10 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './browser/app.js',
+  entry: './tests/runTests.js',
   output: {
     path: __dirname,
-    filename: './public/bundle.js'
+    filename: './tests/bundle.js'
   },
   context: __dirname,
   devtool: 'source-map',  

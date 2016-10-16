@@ -5,6 +5,7 @@
   "main": "server/start.js",
   "scripts": {
     "start": "webpack -w & nodemon --watch server -e js,html server/start.js",
+    "test": "webpack --config webpack.config.testing.js; nodemon tests/bundle.js",
     "seed": "node seed",
     "db-init": "./db-init.sh",
     "postinstall": "npm run db-init"
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "chance": "^0.8.0",
+    "expect": "^1.20.2",
     "nodemon": "^1.7.1"
   }
 }

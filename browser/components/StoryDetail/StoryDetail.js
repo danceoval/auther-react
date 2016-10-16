@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 import ContentEditable from "react-contenteditable";
 
 export default class StoryDetail extends Component {

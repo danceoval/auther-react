@@ -1,9 +1,9 @@
 import { connect } from'react-redux';
 import UserDetail from './UserDetail';
 import _ from 'lodash';
-import { removeUser } from '../../reducers/users';
+import { removeUser } from '../../ducks/users';
 
-const mapStateToProps = ({ users, stories, currentUser }, ownProps) => {
+const mapState = ({ users, stories, currentUser }, ownProps) => {
   const param_id = Number(ownProps.params.id);
   return { 
     user:    _.find(users, user => user.id === param_id), 
@@ -12,11 +12,6 @@ const mapStateToProps = ({ users, stories, currentUser }, ownProps) => {
   }
 }
 
-const mapDispatchToProps = { removeUser }
+const mapDispatch = { removeUser }
 
-const UserDetailContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserDetail);
-
-export default UserDetailContainer;
+export default connect(mapState, mapDispatch)(UserDetail);

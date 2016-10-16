@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import UserItem from './UserItem';
+import UserItem from '../UserItem';
 import { Link } from 'react-router';
 import ContentEditable from "react-contenteditable";
 
-export default class extends Component {
+export default class UserList extends Component {
   constructor(props) {
     super(props);
     this.state = {

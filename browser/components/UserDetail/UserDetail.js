@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import UserItem from './UserItem';
+import React from 'react';
+import UserItem from '../UserItem';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 
-
-export default class UserDetail extends Component {
+export default class UserDetail extends React.Component {
 	constructor(props) {
 		super(props);
 
