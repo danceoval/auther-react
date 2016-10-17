@@ -1,6 +1,6 @@
 import { connect } from'react-redux';
 import StoryDetail from './StoryDetail';
-import { updateStory } from '../../ducks/stories';
+import { updateStory } from '../../../ducks/stories';
 
 import _ from 'lodash';
 

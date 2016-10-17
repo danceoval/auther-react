@@ -40,12 +40,13 @@ export default function reducer (stories = [], action) {
 // DISPATCHERS
 export const fetchStories = () => dispatch => {
     axios.get('/api/stories')
-         .then(res => dispatch(init(res.data)));
+         .then(res => dispatch(init(res.data)))
+         .catch(err => console.error('Fetching stories unsuccesful', err))
 }
 
 export const removeStory = id => dispatch => { 
-    dispatch(remove(id));
     axios.delete(`/api/stories/${id}`)
+         .then(() => dispatch(remove(id)))
          .catch(err => console.error(`Removing story: ${id} unsuccesful`, err))
 }
 
@@ -55,8 +56,8 @@ export const addStory = story => dispatch => {
          .catch(err => console.error(`Creating story: ${story} unsuccesful`, err))
 }
 
-export const updateStory = story => dispatch => {
+export const updateStory = (id, story) => dispatch => {
     axios.put(`/api/stories/${id}`, story)
          .then(res => dispatch(update(res.data)))
-         .catch(err => console.error(`Creating story: ${story} unsuccesful`, err))
+         .catch(err => console.error(`Updating story: ${story} unsuccesful`, err))
 }

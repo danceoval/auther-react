@@ -1,13 +1,13 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import Root from '../Root';
-import Home from '../Home';
-import Login from '../Auth/Login';
-import Signup from '../Auth/Signup';
-import UserList from '../UserList';
-import UserDetail from '../UserDetail';
-import StoryList from '../StoryList';
-import StoryDetail from '../StoryDetail';
+import Root from '../components/Root';
+import Home from '../components/Home';
+import Login from '../components/Auth/Login';
+import Signup from '../components/Auth/Signup';
+import UserList from '../components/User/UserList';
+import UserDetail from '../components/User/UserDetail';
+import StoryList from '../components/Story/StoryList';
+import StoryDetail from '../components/Story/StoryDetail';
 
 export default class Routes extends React.Component {
   constructor(props) {
@@ -16,6 +16,8 @@ export default class Routes extends React.Component {
   }
 
   render() {
+    const { fetchLoggedInUser, fetchUsers, fetchStories } = this.props;
+
     return (
       <Router history={browserHistory}>
         <Route path="/" component={Root} onEnter={this.fetchData}>

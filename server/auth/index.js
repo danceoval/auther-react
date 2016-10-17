@@ -7,16 +7,16 @@ router.post('/login', function (req, res, next) {
   User.findOne({
     where: req.body
   })
-      .then(function (user) {
-        if (!user) {
-          res.sendStatus(401);
-        } else {
-          req.logIn(user, function (err) {
-              if (err) return next(err);
-              res.send(user);
-          });
-        }
-      });
+    .then(function (user) {
+      if (!user) {
+        res.sendStatus(401);
+      } else {
+        req.logIn(user, function (err) {
+            if (err) return next(err);
+            res.send(user);
+        });
+      }
+    });
 });
 
 router.get('/logout', function (req, res, next) {
@@ -39,6 +39,9 @@ router.post('/signup', function (req, res, next) {
       if(err) return next(err);
       res.send(user)
     });
+  })
+  .catch(function(err) {
+    return next(err)
   });
 
 });

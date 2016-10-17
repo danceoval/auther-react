@@ -36,7 +36,7 @@ router.get('/', passport.authenticate('google', { scope : 'email' }));
 // handle the callback after Google has authenticated the user
 router.get('/callback',
     passport.authenticate('google', {
-      successRedirect : '/', // or wherever
-      failureRedirect : '/' // or wherever
+      successRedirect : '/users', // or wherever
+      failureRedirect : '/users' // or wherever
     })
 );

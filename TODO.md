@@ -1,8 +1,5 @@
-A lot of problems seem to come from the fact that you can add stories without authors, etc.
-
-
-DONE: Main Page
 <!--  
+DONE: Main Page / Auth
  - DONE: Basic main page renders
  - DONE: renders correct buttons if logged in or not 
  - DONE: not signed in by default
@@ -10,11 +7,8 @@ DONE: Main Page
  - DONE: Signup persists on reload
  - DONE: Logout works
  - DONE: Logout persists on reload
- - DONE: Signup works -->
- - Would like to redirect on succesful signup to main page
- - Signup with Google is missing, though Login with google exists?
-   Need to look into the OAuth stuff in general
-
+ - DONE: redirection on login/logout
+-->
 
  USER LIST
 <!--   
@@ -22,10 +16,8 @@ DONE: Main Page
   - DONE: Fetching initial users
   - DONE: Removing a user 
   - DONE: Filter works
-  - DONE: Admin can delete anyone
-  - DONE: Signin can add anyone -->
-  - on old-auther you could add or remove regardless of being signed in. What is the correct functionality for the finished version?
-  What about for the starting point? Need to get this down.
+  - DONE: Navigation to /Users/:id
+-->
 
 USER DETAIL
 <!--   
