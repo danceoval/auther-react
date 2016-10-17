@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 export default class UserDetail extends React.Component {
 	constructor(props) {
 		super(props);
+		this.submit = this.submit.bind(this);
 	}
 
 	render() {
@@ -19,20 +20,40 @@ export default class UserDetail extends React.Component {
 			      <h2 className="panel-title large-font">stories</h2>
 			    </div>
 			    <ul className="list-group">
-			      <p className="list-group-item story-item">
-			        <span>
-			        </span>
-			        <button className="btn btn-warning btn-xs">
+			      <form className="list-group-item story-item" onSubmit={this.submit}>
+			        <input 
+			        	name="title"
+			        	type="text"
+              	className="form-like"
+              	required
+              	placeholder="Story Title"
+            	/>
+			        <button type="submit" className="btn btn-warning btn-xs">
 			          <span className="glyphicon glyphicon-plus"></span>
 			        </button>
-			      </p>
+			      </form>
 			      {
               stories
+              	.filter(story => story.author_id === user.id)
                 .map(story => <StoryItem story={story} key={story.id} />)
 			      }
 			    </ul>
 			  </div>
 			</div>
 		);
+	}
+
+	submit(event) {
+		event.preventDefault()
+		const { addStory, user } = this.props;
+		const story = {
+			title: event.target.title.value,
+			paragraphs: [],
+			author_id: user.id
+
+		}
+		console.log('submit', story)
+		addStory(story);
+		event.target.title.value = "";
 	}
 }

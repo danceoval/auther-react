@@ -45,9 +45,10 @@ export const fetchUsers = () => dispatch => {
        .then(res => dispatch(init(res.data)));
 }
 
+//optimistic
 export const removeUser = id => dispatch => {
+  dispatch(remove(id))
   axios.delete(`/api/users/${id}`)
-       .then(() => dispatch(remove(id)))
        .catch(err => console.error(`Removing user: ${id} unsuccesful`, err))
 }
 

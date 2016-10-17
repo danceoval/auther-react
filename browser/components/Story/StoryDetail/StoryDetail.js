@@ -23,6 +23,7 @@ export default class StoryDetail extends Component {
         <ul className="list-inline large-font">
           <li>
             <input 
+              disabled={!currentUser || currentUser}
               className="form-like large-font"
               defaultValue={story.title}
               onChange={e => this.onStoryUpdate({ title: e.target.value })}

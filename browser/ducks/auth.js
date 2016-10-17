@@ -45,10 +45,11 @@ export const fetchLoggedInUser = () => dispatch => {
     .catch(err => console.error("retreive loggin in user failed", err));
 }
 
+// optimistic
 export const logout = () => dispatch => {
+  dispatch(remove());
   return axios
     .get('/auth/logout')
-    .then(() => dispatch(remove()))
     .catch(err => console.error("cannot log out", err));
 }
 

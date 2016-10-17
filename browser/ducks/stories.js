@@ -44,9 +44,10 @@ export const fetchStories = () => dispatch => {
          .catch(err => console.error('Fetching stories unsuccesful', err))
 }
 
+// optimistic
 export const removeStory = id => dispatch => { 
+    dispatch(remove(id))
     axios.delete(`/api/stories/${id}`)
-         .then(() => dispatch(remove(id)))
          .catch(err => console.error(`Removing story: ${id} unsuccesful`, err))
 }
 
